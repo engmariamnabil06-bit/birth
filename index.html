@@ -143,10 +143,8 @@
 </head>
 
 <body>
-  <audio id="birthdayMusic" autoplay preload="auto">
-    <source
-        src="https://upload.wikimedia.org/wikipedia/commons/d/de/Happy_birthday.ogg"
-        type="audio/ogg">
+  <audio id="birthdayMusic" autoplay preload="auto" playsinline>
+    <source src="./Images/lody-birthday.mp3" type="audio/mpeg">
 </audio>
   <!-- 👇 Your entire original content (untouched) -->
   <!-- START -->
@@ -386,19 +384,33 @@
   </script>
 </body>
 <script>
-const music = document.getElementById("birthdayMusic");
-music.volume = 0.65;
+document.addEventListener("DOMContentLoaded", function () {
 
-function playMusic() {
-    music.play().catch(() => {
-        console.log("Waiting for user interaction");
+    const music = document.getElementById("birthdayMusic");
+
+    music.volume = 0.7;
+
+    // Try to play immediately when the website opens
+    function startMusic() {
+        if (music.paused) {
+            music.play().catch(() => {
+                console.log("Waiting for user interaction");
+            });
+        }
+    }
+
+    // Automatic playback attempt
+    startMusic();
+
+    // Fallback for browsers that block autoplay
+    document.addEventListener("pointerdown", startMusic, {
+        once: true
     });
-}
 
-window.addEventListener("load", playMusic);
+    document.addEventListener("keydown", startMusic, {
+        once: true
+    });
 
-document.addEventListener("pointerdown", playMusic, {
-    once: true
 });
 </script>
 </html>
