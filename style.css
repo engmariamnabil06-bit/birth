@@ -260,10 +260,12 @@ body {
     align-items: center;
     border: 6px solid var(--color-black);
 }
-.content .right .image img{
+.content .right .image img {
     width: 100%;
+    height: 100%;
+    display: block;
     object-fit: cover;
-
+    object-position: center;
 }
 .cricle{
     position: absolute;
