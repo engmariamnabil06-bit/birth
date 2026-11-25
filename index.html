@@ -143,11 +143,10 @@
 </head>
 
 <body>
-  <audio
-    id="birthdayMusic"
-    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Happy_Birthday_to_You.ogg"
-    autoplay
-    preload="auto">
+  <audio id="birthdayMusic" autoplay preload="auto">
+    <source
+        src="https://upload.wikimedia.org/wikipedia/commons/d/de/Happy_birthday.ogg"
+        type="audio/ogg">
 </audio>
   <!-- 👇 Your entire original content (untouched) -->
   <!-- START -->
@@ -291,6 +290,13 @@
 
 
   <!-- Original script unchanged -->
+   <div class="audio-credit">
+    <a href="https://commons.wikimedia.org/wiki/File:Happy_birthday.ogg"
+       target="_blank"
+       rel="noopener noreferrer">
+       Audio: Sselmer — CC BY-SA 3.0
+    </a>
+</div>
   <script>
     let datetxt = "25 November 2005";
     let datatxtletter = "Happy birthday to liorty, my favorite person and my everything. ❤️ I honestly don't know how to put into words how much you mean to me. You're not just my best friend; you're my little girl, my sister, my love, my safe place, and one of the very few people I trust with my whole heart. I'm so grateful to have you in my life, and I hope you always know how special you are to me. I wish you a lifetime full of happiness, love, success, and everything your heart dreams of. You deserve the whole world and so much more. I hope life keeps giving us reasons to celebrate together, make silly memories, laugh until we can't breathe, and be there for each other through everything. No matter what, I hope you always know that you'll have me by your side. I love you more than words could ever explain. Happy birthday, lodgty. 🥹💕";
@@ -380,21 +386,18 @@
   </script>
 </body>
 <script>
-const birthdayMusic = document.getElementById("birthdayMusic");
+const music = document.getElementById("birthdayMusic");
+music.volume = 0.65;
 
-birthdayMusic.volume = 0.5;
-
-function playBirthdayMusic() {
-    birthdayMusic.play().catch(() => {});
+function playMusic() {
+    music.play().catch(() => {
+        console.log("Waiting for user interaction");
+    });
 }
 
-window.addEventListener("load", playBirthdayMusic);
+window.addEventListener("load", playMusic);
 
-document.addEventListener("pointerdown", playBirthdayMusic, {
-    once: true
-});
-
-document.addEventListener("keydown", playBirthdayMusic, {
+document.addEventListener("pointerdown", playMusic, {
     once: true
 });
 </script>
