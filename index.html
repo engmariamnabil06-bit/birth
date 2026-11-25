@@ -143,6 +143,12 @@
 </head>
 
 <body>
+  <audio
+    id="birthdayMusic"
+    src="https://upload.wikimedia.org/wikipedia/commons/0/02/Happy_Birthday_to_You.ogg"
+    autoplay
+    preload="auto">
+</audio>
   <!-- 👇 Your entire original content (untouched) -->
   <!-- START -->
   <div id="wrapper">
@@ -370,6 +376,26 @@
       $(".box__letter").slideUp();
       $(".letter__border").slideUp();
     });
+    
   </script>
 </body>
+<script>
+const birthdayMusic = document.getElementById("birthdayMusic");
+
+birthdayMusic.volume = 0.5;
+
+function playBirthdayMusic() {
+    birthdayMusic.play().catch(() => {});
+}
+
+window.addEventListener("load", playBirthdayMusic);
+
+document.addEventListener("pointerdown", playBirthdayMusic, {
+    once: true
+});
+
+document.addEventListener("keydown", playBirthdayMusic, {
+    once: true
+});
+</script>
 </html>
